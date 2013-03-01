@@ -1,7 +1,7 @@
 # Django settings for urlshort project.
 import os, sys
 import os.path
-import dj_database_url
+
 
 PROJECT_PATH = os.path.dirname(__file__)
 
@@ -138,8 +138,9 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-DATABASES['default'] =  dj_database_url.config()
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
 
